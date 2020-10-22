@@ -1,0 +1,26 @@
+<div class="layout-container" ng-controller="LoginCtrl">
+    <div class="page-container bg-blue-grey-900">
+      <div class="container-full">
+        <div class="container container-xs"><img src="ClientApp/assets/img/eMedicodes_larger.png" class="mv-lg block-center img-responsive">
+          <form name="loginForm" ng-submit="AuthenticateUser()" novalidate="" class="card b0 form-validate">
+            <div class="card-offset pb0">
+              <div class="card-offset-item text-right"><a href="#/register" class="btn-raised btn btn-info btn-circle btn-lg"><em class="ion-person-add"></em></a></div>
+              <div class="card-offset-item text-right hidden">
+                <div class="btn btn-success btn-circle btn-lg"><em class="ion-checkmark-round"></em></div>
+              </div>
+            </div>
+            <div class="card-heading">
+              <div class="card-title text-center">Authorized Users Only</div>
+            </div>
+            <div class="card-body">
+              
+                <!--<button type="button" class="btn btn-success btn-flat" ng-click="goToRegistration()">Sign Up for 14-day Free Trial</button>-->
+            </div>
+              <button type="submit" class="btn btn-primary btn-flat signin-db">Sign In</button>
+              <!--<button type="button" ng-click="goToRegistration()" class="btn btn-primary btn-flat signin-db">Register</button>-->
+          </form>
+          <!--<div class="text-center text-sm"><a href="recover.html" class="text-inherit">Forgot password?</a></div>-->
+        </div>
+      </div>
+    </div>
+  </div>

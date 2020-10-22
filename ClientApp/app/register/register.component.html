@@ -1,0 +1,149 @@
+<div class="page-container bg-blue-grey-900" ng-controller="RegistrationCtrl">
+    <div class="container-full">
+      <div class="container container-xs"><img src="ClientApp/assets/img/eMedicodes_larger.png" class="mv-lg block-center img-responsive">
+        <form id="RegisterForm" ng-submit="Register()" name="RegisterForm" novalidate="" class="card b0 form-validate">
+            <div class="card-offset pb0">
+                <div class="card-offset-item text-right">
+                    <div id="form-ok" class="btn btn-success btn-circle btn-lg hidden">
+                        <em class="ion-checkmark-round"></em>
+                    </div>
+                </div>
+            </div>
+            <div class="card-heading">
+                <div class="card-title text-center">Create account</div>
+                <small>"*" indicates required fields.</small>
+            </div>
+            <div class="card-body">
+                <div class="mda-form-group float-label mda-input-group" ng-class="{ 'has-error' : RegisterForm.FirstName.$invalid && !RegisterForm.FirstName.$pristine }">
+                    <div class="mda-form-control">
+                        <input type="text" name="FirstName" ng-model="FirstName" required="" class="form-control">
+                        <p ng-show="RegisterForm.FirstName.$error.minlength" class="help-block">Lastname is too short.</p>
+                        <p ng-show="RegisterForm.FirstName.$error.maxlength" class="help-block">Lastname is too long.</p>
+                        <p ng-show="RegisterForm.FirstName.$invalid && !RegisterForm.FirstName.$pristine" class="help-block">Your Firstname is required.</p>
+                        <div class="mda-form-control-line"></div>
+                        <label>First Name *</label>
+                    </div>
+                    <span class="mda-input-group-addon">
+                        <em class="ion-ios-contact icon-lg"></em>
+                    </span>
+                </div>
+                <div class="mda-form-group float-label mda-input-group" ng-class="{ 'has-error' : RegisterForm.LastName.$invalid && !RegisterForm.LastName.$pristine }">
+                    <div class="mda-form-control">
+                        <input type="text" name="LastName" ng-minlength="3" ng-maxlength="16" ng-model="LastName" required="" class="form-control">
+                        <p ng-show="RegisterForm.LastName.$error.minlength" class="help-block">Lastname is too short.</p>
+                        <p ng-show="RegisterForm.LastName.$error.maxlength" class="help-block">Lastname is too long.</p>
+                        <p ng-show="RegisterForm.LastName.$invalid && !RegisterForm.LastName.$pristine" class="help-block">Your LastName is required.</p>
+                        <div class="mda-form-control-line"></div>
+                        <label>Last Name *</label>
+                    </div>
+                    <span class="mda-input-group-addon">
+                        <em class="ion-ios-contact icon-lg"></em>
+                    </span>
+                </div>
+                <div class="mda-form-group float-label mda-input-group" ng-class="{ 'has-error' : RegisterForm.CompanyEmail.$invalid && !RegisterForm.CompanyEmail.$pristine }">
+                    <div class="mda-form-control">
+                        <input type="email" name="CompanyEmail" ng-model="CompanyEmail" required="" class="form-control">
+                        <p ng-show="RegisterForm.CompanyEmail.$invalid && !RegisterForm.CompanyEmail.$pristine" class="help-block">Enter a valid email.</p>
+                        <div class="mda-form-control-line"></div>
+                        <label>Email address *</label>
+                    </div>
+                    <span class="mda-input-group-addon">
+                        <em class="ion-ios-email-outline icon-lg"></em>
+                    </span>
+                </div>
+                <div class="mda-form-group float-label mda-input-group" ng-class="{ 'has-error' : RegisterForm.City.$invalid && !RegisterForm.City.$pristine }">
+                    <div class="mda-form-control">
+                        <input type="text" name="City" ng-model="City" class="form-control">
+                        <p ng-show="RegisterForm.City.$invalid && !RegisterForm.City.$pristine" class="help-block">City is required.</p>
+                        <div class="mda-form-control-line"></div>
+                        <label>City</label>
+                    </div>
+                    <span class="mda-input-group-addon">
+                        <em class="ion-location icon-lg"></em>
+                    </span>
+                </div>
+                <div class="mda-form-group float-label mda-input-group">
+                    <div class="mda-form-control">
+                        <select name="State" ng-model="State" class="form-control">
+                            <option ng-repeat="State in States">{{State.name}}</option>
+                        </select>
+                        <div class="mda-form-control-line"></div>
+                        <label>State</label>
+                    </div>
+                    <span class="mda-input-group-addon">
+                        <em class="ion-location icon-lg"></em>
+                    </span>
+                </div>
+                <div class="mda-form-group float-label mda-input-group">
+                    <div class="mda-form-control">
+                        <select name="Country" ng-model="Country" class="form-control">
+                            <option ng-repeat="Country in Countries">{{Country.name}}</option>
+                        </select>
+                        <div class="mda-form-control-line"></div>
+                        <label>Country</label>
+                    </div>
+                    <span class="mda-input-group-addon">
+                        <em class="ion-location icon-lg"></em>
+                    </span>
+                </div>
+                <div class="mda-form-group float-label mda-input-group">
+                    <div class="mda-form-control">
+                        <input type="text" name="StreetAddress" ng-model="StreetAddress" class="form-control">
+                        <div class="mda-form-control-line"></div>
+                        <label>Street Address</label>
+                    </div>
+                    <span class="mda-input-group-addon">
+                        <em class="ion-android-home icon-lg"></em>
+                    </span>
+                </div>
+                <div class="mda-form-group float-label mda-input-group">
+                    <div class="mda-form-control">
+                        <input type="text" name="PhoneNumber" ng-model="PhoneNumber" class="form-control">
+                        <div class="mda-form-control-line"></div>
+                        <label>Phone Number</label>
+                    </div>
+                    <span class="mda-input-group-addon">
+                        <em class="ion-ios-contact icon-lg"></em>
+                    </span>
+                </div>               
+                <div class="mda-form-group float-label mda-input-group" ng-class="{ 'has-error' : RegisterForm.Password.$invalid && !RegisterForm.Password.$pristine }">
+                    <div class="mda-form-control">
+                        <input type="password" name="Password" ng-minlength="8" ng-maxlength="16" ng-model="Password" required="" class="form-control">
+                        <p ng-show="RegisterForm.Password.$error.minlength" class="help-block">Password is too short.</p>
+                        <p ng-show="RegisterForm.Password.$error.maxlength" class="help-block">Password is too long.</p>
+                        <div class="mda-form-control-line"></div>
+                        <label>Password *</label>
+                    </div>
+                    <span class="mda-input-group-addon">
+                        <em class="ion-ios-locked-outline icon-lg"></em>
+                    </span>
+                </div>
+                <div class="mda-form-group float-label mda-input-group" ng-class="{ 'has-error' : RegisterForm.PasswordConfirm.$invalid && !RegisterForm.PasswordConfirm.$pristine }">
+                    <div class="mda-form-control">
+                        <input type="password" name="PasswordConfirm" ng-minlength="8" ng-maxlength="16" ng-model="PasswordConfirm" required="" class="form-control">
+                        <p ng-show="RegisterForm.PasswordConfirm.$error.minlength" class="help-block">Password is too short.</p>
+                        <p ng-show="RegisterForm.PasswordConfirm.$error.maxlength" class="help-block">Password is too long.</p>
+                        <p ng-show="RegisterForm.PasswordConfirm != RegisterForm.Password && RegisterForm.LastName.$invalid && !RegisterForm.LastName.$pristine"
+                            class="help-block">Passwords do not match</p>
+                        <div class="mda-form-control-line"></div>
+                        <label>Confirm password *</label>
+                    </div>
+                    <span class="mda-input-group-addon">
+                        <em class="ion-ios-locked-outline icon-lg"></em>
+                    </span>
+                </div>
+            </div>
+            <button type="submit" ng-disabled="RegisterForm.$invalid" class="btn btn-primary btn-flat">Next Step</button>
+            <div class="card-body bg-gray-lighter text-center text-sm">
+                <span class="spr">By registering I accept the</span>
+                <a href="#" class="spr">Terms of Service</a>
+                <span class="spr">and</span>
+                <a href="#" class="spr">Privacy</a>
+            </div>
+        </form>
+        <div class="text-center text-sm">
+            <a href="../../index.html" class="text-inherit">Already Have an Account? Sign In!</a>
+        </div>
+      </div>
+    </div>
+  </div>

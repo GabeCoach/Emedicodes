@@ -1,0 +1,22 @@
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+<div class="card">
+    <div class="card-heading">
+        <h3>Re-Imbursement Calculator</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="container-fluid">
+                <div ui-view=""></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="pull-left">
+                <button class="btn btn-raised btn-default ripple" ng-disabled="prevBtnDisabled" ng-click="Previous()">Previous</button>
+                <button class="btn btn-raised btn-default ripple" ng-disabled="nextBtnDisabled" ng-click="Next()">Next</button>
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-raised btn-primary ripple" ng-disabled="calculateBtnDisabled" ng-click="CalculateButton()">Calculate</button>
+            </div>
+        </div>
+    </div>
+</div>

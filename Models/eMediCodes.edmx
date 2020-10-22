@@ -1,0 +1,918 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_A3003E_emedicodesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A3003E_emedicodes.dbo.2018 MPFS Addendum B' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="2018 MPFS Addendum B">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CPT1  HCPCS" Type="varchar" MaxLength="500" />
+          <Property Name="Mod" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="500" />
+          <Property Name="Not Used for Medicare Payment" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Work RVUs2" Type="varchar" MaxLength="50" />
+          <Property Name="Non-Facility PE RVUs2" Type="varchar" MaxLength="500" />
+          <Property Name="Facility PE RVUs2" Type="varchar" MaxLength="500" />
+          <Property Name="Mal-Practice RVUs2" Type="varchar" MaxLength="500" />
+          <Property Name="Total Non-Facility RVUs2" Type="varchar" MaxLength="500" />
+          <Property Name="Total Facility RVUs2" Type="varchar" MaxLength="500" />
+          <Property Name="Global" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A3003E_emedicodes.dbo.2018_GPCI_Addendum_E' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="2018_GPCI_Addendum_E">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MedAdmin" Type="nvarchar" MaxLength="255" />
+          <Property Name="LocalNumber" Type="float" />
+          <Property Name="LocalName" Type="nvarchar" MaxLength="255" />
+          <Property Name="PW_GPCI" Type="float" />
+          <Property Name="PE_GPCI" Type="float" />
+          <Property Name="MP_GPCI" Type="float" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A3003E_emedicodes.dbo.2018_OPPS_Addendum_B' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="2018_OPPS_Addendum_B">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HCPCS Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="Short Descriptor" Type="nvarchar" MaxLength="255" />
+          <Property Name="CI" Type="nvarchar" MaxLength="255" />
+          <Property Name="SI" Type="nvarchar" MaxLength="255" />
+          <Property Name="APC " Type="nvarchar" MaxLength="255" />
+          <Property Name="Relative Weight" Type="float" />
+          <Property Name="Payment Rate " Type="money" />
+          <Property Name="National Unadjusted Copayment " Type="nvarchar" MaxLength="255" />
+          <Property Name="Minimum Unadjusted Copayment " Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ApplicableDiseaseSiteModality">
+          <Key>
+            <PropertyRef Name="ApplicableDiseaseSiteModalityID" />
+          </Key>
+          <Property Name="ApplicableDiseaseSiteModalityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiseaseSiteID" Type="int" Nullable="false" />
+          <Property Name="ModalityID" Type="int" />
+        </EntityType>
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="CaseID" />
+          </Key>
+          <Property Name="CaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="CaseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CaseDescription" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="UpdatedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CaseCodes">
+          <Key>
+            <PropertyRef Name="CaseCodesID" />
+          </Key>
+          <Property Name="CaseCodesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CaseID" Type="int" />
+          <Property Name="CaseCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CCI_Edits">
+          <Key>
+            <PropertyRef Name="CCI_Edit_ID" />
+          </Key>
+          <Property Name="CCI_Edit_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Column 1" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Column 2" Type="varchar" MaxLength="500" />
+          <Property Name="* in existence" Type="varchar" MaxLength="500" />
+          <Property Name="Effective Date" Type="varchar" MaxLength="500" />
+          <Property Name="Deletion" Type="varchar" MaxLength="500" />
+          <Property Name="Modifier" Type="varchar" MaxLength="500" />
+          <Property Name="PTP Edit Rationale" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="CMS_Wage_Index">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CBSA" Type="varchar" MaxLength="500" />
+          <Property Name="Area Name" Type="varchar" MaxLength="500" />
+          <Property Name="State" Type="varchar" MaxLength="500" />
+          <Property Name="State Code" Type="varchar" MaxLength="500" />
+          <Property Name="2FY 2017 Average Hourly Wage" Type="varchar" MaxLength="500" />
+          <Property Name="23-Year Average Hourly Wage (2015 2016 2017)" Type="varchar" MaxLength="500" />
+          <Property Name="Wage Index" Type="varchar" MaxLength="500" />
+          <Property Name="GAF" Type="varchar" MaxLength="500" />
+          <Property Name="Reclassified Wage Index" Type="varchar" MaxLength="500" />
+          <Property Name="Reclassified GAF" Type="varchar" MaxLength="500" />
+          <Property Name="3Pre-Frontier and or Pre-Rural Floor Wage Index" Type="varchar" MaxLength="500" />
+          <Property Name="Eligible for Frontier Wage Index" Type="varchar" MaxLength="500" />
+          <Property Name="4Eligible for Rural Floor Wage Index" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="disease">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="CODE" Type="varchar" MaxLength="500" />
+          <Property Name="CATEGORY" Type="varchar" MaxLength="500" />
+          <Property Name="ACTIVE" Type="varchar" MaxLength="500" />
+          <Property Name="MODEL" Type="varchar" MaxLength="500" />
+          <Property Name="ID" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DiseaseSite">
+          <Key>
+            <PropertyRef Name="DiseaseSiteID" />
+          </Key>
+          <Property Name="DiseaseSiteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiseaseSiteName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GPCI2017">
+          <Key>
+            <PropertyRef Name="GPCI_ID" />
+          </Key>
+          <Property Name="GPCI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Carrier" Type="varchar" MaxLength="500" />
+          <Property Name="Locality Number" Type="varchar" MaxLength="500" />
+          <Property Name="Locality Name" Type="varchar" MaxLength="500" />
+          <Property Name="PW GPCI" Type="varchar" MaxLength="500" />
+          <Property Name="PE GPCI" Type="varchar" MaxLength="500" />
+          <Property Name="MP GPCI" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="HospitalTreatmentCodes">
+          <Key>
+            <PropertyRef Name="HospitalTreatmentCodesID" />
+          </Key>
+          <Property Name="HospitalTreatmentCodesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModalityID" Type="int" />
+          <Property Name="CPTCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumberOfTreatment" Type="int" />
+        </EntityType>
+        <EntityType Name="Modalities">
+          <Key>
+            <PropertyRef Name="ModalityID" />
+          </Key>
+          <Property Name="ModalityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModalityName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MPFS_Addendum_B">
+          <Key>
+            <PropertyRef Name="MPFS_ID" />
+          </Key>
+          <Property Name="MPFS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CPT1" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="CPT1_HCPCS" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Mod" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Work RVUs" Type="varchar" MaxLength="500" />
+          <Property Name="Non- Facility PE RVUs" Type="varchar" MaxLength="500" />
+          <Property Name="Facility PE RVUs" Type="varchar" MaxLength="500" />
+          <Property Name="Mal- Practice RVUs" Type="varchar" MaxLength="500" />
+          <Property Name="Total Non-Facility RVUs" Type="varchar" MaxLength="500" />
+          <Property Name="Total Facility RVUs" Type="varchar" MaxLength="500" />
+          <Property Name="Global" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="MUE_Information">
+          <Key>
+            <PropertyRef Name="MUE_ID" />
+          </Key>
+          <Property Name="MUE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HCPCS CPT Code" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Outpatient Hospital Services MUE Values" Type="varchar" MaxLength="500" />
+          <Property Name="MUE Adjudication Indicator" Type="varchar" MaxLength="500" />
+          <Property Name="MUE Rationale" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="OPPS_Addendum_B">
+          <Key>
+            <PropertyRef Name="HCPCS Code" />
+          </Key>
+          <Property Name="HCPCS Code" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Short Descriptor" Type="varchar" MaxLength="500" />
+          <Property Name="CH" Type="varchar" MaxLength="50" />
+          <Property Name="SI" Type="varchar" MaxLength="500" />
+          <Property Name="APC" Type="varchar" MaxLength="500" />
+          <Property Name="Relative Weight" Type="varchar" MaxLength="500" />
+          <Property Name="Payment Rate " Type="varchar" MaxLength="500" />
+          <Property Name="National Unadjusted Copayment " Type="varchar" MaxLength="500" />
+          <Property Name="Minimum Unadjusted Copayment " Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserActions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserAction" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsSecureAction" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="254" />
+          <Property Name="ClaimType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClaimValue" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserLogins">
+          <Key>
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="254" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="254" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserNameConfirmed" Type="bit" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailConfirmed" Type="bit" />
+          <Property Name="SecurityStamp" Type="nvarchar" MaxLength="254" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="254" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ApprovalDate" Type="datetime" />
+          <Property Name="LastLoginDate" Type="datetime" />
+          <Property Name="IsLocked" Type="bit" />
+          <Property Name="Auth0Identifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="StripeIdentifier" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="DB_A3003E_emedicodesModelStoreContainer">
+          <EntitySet Name="ApplicableDiseaseSiteModality" EntityType="Self.ApplicableDiseaseSiteModality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaseCodes" EntityType="Self.CaseCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CCI_Edits" EntityType="Self.CCI_Edits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CMS_Wage_Index" EntityType="Self.CMS_Wage_Index" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="disease" EntityType="Self.disease" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiseaseSite" EntityType="Self.DiseaseSite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GPCI2017" EntityType="Self.GPCI2017" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HospitalTreatmentCodes" EntityType="Self.HospitalTreatmentCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modalities" EntityType="Self.Modalities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MPFS_Addendum_B" EntityType="Self.MPFS_Addendum_B" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MUE_Information" EntityType="Self.MUE_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OPPS_Addendum_B" EntityType="Self.OPPS_Addendum_B" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserActions" EntityType="Self.UserActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserClaims" EntityType="Self.UserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="2018 MPFS Addendum B" EntityType="Self.2018 MPFS Addendum B" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [2018 MPFS Addendum B].[Id] AS [Id], 
+    [2018 MPFS Addendum B].[CPT1  HCPCS] AS [CPT1  HCPCS], 
+    [2018 MPFS Addendum B].[Mod] AS [Mod], 
+    [2018 MPFS Addendum B].[Status] AS [Status], 
+    [2018 MPFS Addendum B].[Not Used for Medicare Payment] AS [Not Used for Medicare Payment], 
+    [2018 MPFS Addendum B].[Description] AS [Description], 
+    [2018 MPFS Addendum B].[Work RVUs2] AS [Work RVUs2], 
+    [2018 MPFS Addendum B].[Non-Facility PE RVUs2] AS [Non-Facility PE RVUs2], 
+    [2018 MPFS Addendum B].[Facility PE RVUs2] AS [Facility PE RVUs2], 
+    [2018 MPFS Addendum B].[Mal-Practice RVUs2] AS [Mal-Practice RVUs2], 
+    [2018 MPFS Addendum B].[Total Non-Facility RVUs2] AS [Total Non-Facility RVUs2], 
+    [2018 MPFS Addendum B].[Total Facility RVUs2] AS [Total Facility RVUs2], 
+    [2018 MPFS Addendum B].[Global] AS [Global]
+    FROM [dbo].[2018 MPFS Addendum B] AS [2018 MPFS Addendum B]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="2018_GPCI_Addendum_E" EntityType="Self.2018_GPCI_Addendum_E" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [2018_GPCI_Addendum_E].[MedAdmin] AS [MedAdmin], 
+    [2018_GPCI_Addendum_E].[LocalNumber] AS [LocalNumber], 
+    [2018_GPCI_Addendum_E].[LocalName] AS [LocalName], 
+    [2018_GPCI_Addendum_E].[PW_GPCI] AS [PW_GPCI], 
+    [2018_GPCI_Addendum_E].[PE_GPCI] AS [PE_GPCI], 
+    [2018_GPCI_Addendum_E].[MP_GPCI] AS [MP_GPCI], 
+    [2018_GPCI_Addendum_E].[Id] AS [Id]
+    FROM [dbo].[2018_GPCI_Addendum_E] AS [2018_GPCI_Addendum_E]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="2018_OPPS_Addendum_B" EntityType="Self.2018_OPPS_Addendum_B" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [2018_OPPS_Addendum_B].[Id] AS [Id], 
+    [2018_OPPS_Addendum_B].[HCPCS Code] AS [HCPCS Code], 
+    [2018_OPPS_Addendum_B].[Short Descriptor] AS [Short Descriptor], 
+    [2018_OPPS_Addendum_B].[CI] AS [CI], 
+    [2018_OPPS_Addendum_B].[SI] AS [SI], 
+    [2018_OPPS_Addendum_B].[APC ] AS [APC ], 
+    [2018_OPPS_Addendum_B].[Relative Weight] AS [Relative Weight], 
+    [2018_OPPS_Addendum_B].[Payment Rate ] AS [Payment Rate ], 
+    [2018_OPPS_Addendum_B].[National Unadjusted Copayment ] AS [National Unadjusted Copayment ], 
+    [2018_OPPS_Addendum_B].[Minimum Unadjusted Copayment ] AS [Minimum Unadjusted Copayment ]
+    FROM [dbo].[2018_OPPS_Addendum_B] AS [2018_OPPS_Addendum_B]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_A3003E_emedicodesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ApplicableDiseaseSiteModality">
+          <Key>
+            <PropertyRef Name="ApplicableDiseaseSiteModalityID" />
+          </Key>
+          <Property Name="ApplicableDiseaseSiteModalityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiseaseSiteID" Type="Int32" Nullable="false" />
+          <Property Name="ModalityID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="CaseID" />
+          </Key>
+          <Property Name="CaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="CaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CaseDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CaseCode">
+          <Key>
+            <PropertyRef Name="CaseCodesID" />
+          </Key>
+          <Property Name="CaseCodesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CaseID" Type="Int32" />
+          <Property Name="CaseCode1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CCI_Edits">
+          <Key>
+            <PropertyRef Name="CCI_Edit_ID" />
+          </Key>
+          <Property Name="CCI_Edit_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Column_1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Column_2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="C__in_existence" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Effective_Date" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Deletion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Modifier" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PTP_Edit_Rationale" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CMS_Wage_Index">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CBSA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Area_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="State_Code" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="C2FY_2017_Average_Hourly_Wage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="C23_Year_Average_Hourly_Wage__2015_2016_2017_" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Wage_Index" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="GAF" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Reclassified_Wage_Index" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Reclassified_GAF" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="C3Pre_Frontier_and_or_Pre_Rural_Floor_Wage_Index" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Eligible_for_Frontier_Wage_Index" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="C4Eligible_for_Rural_Floor_Wage_Index" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="disease">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CODE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CATEGORY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MODEL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DiseaseSite">
+          <Key>
+            <PropertyRef Name="DiseaseSiteID" />
+          </Key>
+          <Property Name="DiseaseSiteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiseaseSiteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GPCI2017">
+          <Key>
+            <PropertyRef Name="GPCI_ID" />
+          </Key>
+          <Property Name="GPCI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Carrier" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Locality_Number" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Locality_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PW_GPCI" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PE_GPCI" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MP_GPCI" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HospitalTreatmentCode">
+          <Key>
+            <PropertyRef Name="HospitalTreatmentCodesID" />
+          </Key>
+          <Property Name="HospitalTreatmentCodesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModalityID" Type="Int32" />
+          <Property Name="CPTCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfTreatment" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Modality">
+          <Key>
+            <PropertyRef Name="ModalityID" />
+          </Key>
+          <Property Name="ModalityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModalityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MPFS_Addendum_B">
+          <Key>
+            <PropertyRef Name="MPFS_ID" />
+          </Key>
+          <Property Name="MPFS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CPT1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CPT1_HCPCS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mod" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Work_RVUs" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Non__Facility_PE_RVUs" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Facility_PE_RVUs" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mal__Practice_RVUs" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Non_Facility_RVUs" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Facility_RVUs" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Global" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MUE_Information">
+          <Key>
+            <PropertyRef Name="MUE_ID" />
+          </Key>
+          <Property Name="MUE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HCPCS_CPT_Code" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Outpatient_Hospital_Services_MUE_Values" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MUE_Adjudication_Indicator" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MUE_Rationale" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OPPS_Addendum_B">
+          <Key>
+            <PropertyRef Name="HCPCS_Code" />
+          </Key>
+          <Property Name="HCPCS_Code" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Short_Descriptor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SI" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="APC" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Relative_Weight" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Payment_Rate_" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="National_Unadjusted_Copayment_" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Minimum_Unadjusted_Copayment_" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserAction1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsSecureAction" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="UserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserNameConfirmed" Type="Boolean" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ApprovalDate" Type="DateTime" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <Property Name="IsLocked" Type="Boolean" />
+          <Property Name="Auth0Identifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StripeIdentifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DB_A3003E_emedicodesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicableDiseaseSiteModalities" EntityType="Self.ApplicableDiseaseSiteModality" />
+          <EntitySet Name="Cases" EntityType="Self.Case" />
+          <EntitySet Name="CaseCodes" EntityType="Self.CaseCode" />
+          <EntitySet Name="CCI_Edits" EntityType="Self.CCI_Edits" />
+          <EntitySet Name="CMS_Wage_Index" EntityType="Self.CMS_Wage_Index" />
+          <EntitySet Name="diseases" EntityType="Self.disease" />
+          <EntitySet Name="DiseaseSites" EntityType="Self.DiseaseSite" />
+          <EntitySet Name="GPCI2017" EntityType="Self.GPCI2017" />
+          <EntitySet Name="HospitalTreatmentCodes" EntityType="Self.HospitalTreatmentCode" />
+          <EntitySet Name="Modalities" EntityType="Self.Modality" />
+          <EntitySet Name="MPFS_Addendum_B" EntityType="Self.MPFS_Addendum_B" />
+          <EntitySet Name="MUE_Information" EntityType="Self.MUE_Information" />
+          <EntitySet Name="OPPS_Addendum_B" EntityType="Self.OPPS_Addendum_B" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="UserActions" EntityType="Self.UserAction" />
+          <EntitySet Name="UserClaims" EntityType="Self.UserClaim" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="C2018_MPFS_Addendum_B" EntityType="DB_A3003E_emedicodesModel.C2018_MPFS_Addendum_B" />
+          <EntitySet Name="C2018_OPPS_Addendum_B" EntityType="DB_A3003E_emedicodesModel.C2018_OPPS_Addendum_B" />
+          <EntitySet Name="C2018_GPCI_Addendum_E" EntityType="DB_A3003E_emedicodesModel.C2018_GPCI_Addendum_E" />
+        </EntityContainer>
+        <EntityType Name="C2018_MPFS_Addendum_B">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CPT1__HCPCS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mod" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Not_Used_for_Medicare_Payment" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Work_RVUs2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Non_Facility_PE_RVUs2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Facility_PE_RVUs2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mal_Practice_RVUs2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Non_Facility_RVUs2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Facility_RVUs2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Global" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="C2018_OPPS_Addendum_B">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HCPCS_Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Short_Descriptor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="APC_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Relative_Weight" Type="Double" />
+          <Property Name="Payment_Rate_" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="National_Unadjusted_Copayment_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Minimum_Unadjusted_Copayment_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="C2018_GPCI_Addendum_E">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MedAdmin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LocalNumber" Type="Double" />
+          <Property Name="LocalName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PW_GPCI" Type="Double" />
+          <Property Name="PE_GPCI" Type="Double" />
+          <Property Name="MP_GPCI" Type="Double" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_A3003E_emedicodesModelStoreContainer" CdmEntityContainer="DB_A3003E_emedicodesEntities">
+          <EntitySetMapping Name="ApplicableDiseaseSiteModalities">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.ApplicableDiseaseSiteModality">
+              <MappingFragment StoreEntitySet="ApplicableDiseaseSiteModality">
+                <ScalarProperty Name="ApplicableDiseaseSiteModalityID" ColumnName="ApplicableDiseaseSiteModalityID" />
+                <ScalarProperty Name="DiseaseSiteID" ColumnName="DiseaseSiteID" />
+                <ScalarProperty Name="ModalityID" ColumnName="ModalityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cases">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.Case">
+              <MappingFragment StoreEntitySet="Case">
+                <ScalarProperty Name="CaseID" ColumnName="CaseID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CaseName" ColumnName="CaseName" />
+                <ScalarProperty Name="CaseDescription" ColumnName="CaseDescription" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseCodes">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.CaseCode">
+              <MappingFragment StoreEntitySet="CaseCodes">
+                <ScalarProperty Name="CaseCodesID" ColumnName="CaseCodesID" />
+                <ScalarProperty Name="CaseID" ColumnName="CaseID" />
+                <ScalarProperty Name="CaseCode1" ColumnName="CaseCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CCI_Edits">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.CCI_Edits">
+              <MappingFragment StoreEntitySet="CCI_Edits">
+                <ScalarProperty Name="CCI_Edit_ID" ColumnName="CCI_Edit_ID" />
+                <ScalarProperty Name="Column_1" ColumnName="Column 1" />
+                <ScalarProperty Name="Column_2" ColumnName="Column 2" />
+                <ScalarProperty Name="C__in_existence" ColumnName="* in existence" />
+                <ScalarProperty Name="Effective_Date" ColumnName="Effective Date" />
+                <ScalarProperty Name="Deletion" ColumnName="Deletion" />
+                <ScalarProperty Name="Modifier" ColumnName="Modifier" />
+                <ScalarProperty Name="PTP_Edit_Rationale" ColumnName="PTP Edit Rationale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_Wage_Index">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.CMS_Wage_Index">
+              <MappingFragment StoreEntitySet="CMS_Wage_Index">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CBSA" ColumnName="CBSA" />
+                <ScalarProperty Name="Area_Name" ColumnName="Area Name" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="State_Code" ColumnName="State Code" />
+                <ScalarProperty Name="C2FY_2017_Average_Hourly_Wage" ColumnName="2FY 2017 Average Hourly Wage" />
+                <ScalarProperty Name="C23_Year_Average_Hourly_Wage__2015_2016_2017_" ColumnName="23-Year Average Hourly Wage (2015 2016 2017)" />
+                <ScalarProperty Name="Wage_Index" ColumnName="Wage Index" />
+                <ScalarProperty Name="GAF" ColumnName="GAF" />
+                <ScalarProperty Name="Reclassified_Wage_Index" ColumnName="Reclassified Wage Index" />
+                <ScalarProperty Name="Reclassified_GAF" ColumnName="Reclassified GAF" />
+                <ScalarProperty Name="C3Pre_Frontier_and_or_Pre_Rural_Floor_Wage_Index" ColumnName="3Pre-Frontier and or Pre-Rural Floor Wage Index" />
+                <ScalarProperty Name="Eligible_for_Frontier_Wage_Index" ColumnName="Eligible for Frontier Wage Index" />
+                <ScalarProperty Name="C4Eligible_for_Rural_Floor_Wage_Index" ColumnName="4Eligible for Rural Floor Wage Index" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="diseases">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.disease">
+              <MappingFragment StoreEntitySet="disease">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiseaseSites">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.DiseaseSite">
+              <MappingFragment StoreEntitySet="DiseaseSite">
+                <ScalarProperty Name="DiseaseSiteID" ColumnName="DiseaseSiteID" />
+                <ScalarProperty Name="DiseaseSiteName" ColumnName="DiseaseSiteName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPCI2017">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.GPCI2017">
+              <MappingFragment StoreEntitySet="GPCI2017">
+                <ScalarProperty Name="GPCI_ID" ColumnName="GPCI_ID" />
+                <ScalarProperty Name="Carrier" ColumnName="Carrier" />
+                <ScalarProperty Name="Locality_Number" ColumnName="Locality Number" />
+                <ScalarProperty Name="Locality_Name" ColumnName="Locality Name" />
+                <ScalarProperty Name="PW_GPCI" ColumnName="PW GPCI" />
+                <ScalarProperty Name="PE_GPCI" ColumnName="PE GPCI" />
+                <ScalarProperty Name="MP_GPCI" ColumnName="MP GPCI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HospitalTreatmentCodes">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.HospitalTreatmentCode">
+              <MappingFragment StoreEntitySet="HospitalTreatmentCodes">
+                <ScalarProperty Name="HospitalTreatmentCodesID" ColumnName="HospitalTreatmentCodesID" />
+                <ScalarProperty Name="ModalityID" ColumnName="ModalityID" />
+                <ScalarProperty Name="CPTCode" ColumnName="CPTCode" />
+                <ScalarProperty Name="NumberOfTreatment" ColumnName="NumberOfTreatment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modalities">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.Modality">
+              <MappingFragment StoreEntitySet="Modalities">
+                <ScalarProperty Name="ModalityID" ColumnName="ModalityID" />
+                <ScalarProperty Name="ModalityName" ColumnName="ModalityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MPFS_Addendum_B">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.MPFS_Addendum_B">
+              <MappingFragment StoreEntitySet="MPFS_Addendum_B">
+                <ScalarProperty Name="MPFS_ID" ColumnName="MPFS_ID" />
+                <ScalarProperty Name="CPT1" ColumnName="CPT1" />
+                <ScalarProperty Name="CPT1_HCPCS" ColumnName="CPT1_HCPCS" />
+                <ScalarProperty Name="Mod" ColumnName="Mod" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Work_RVUs" ColumnName="Work RVUs" />
+                <ScalarProperty Name="Non__Facility_PE_RVUs" ColumnName="Non- Facility PE RVUs" />
+                <ScalarProperty Name="Facility_PE_RVUs" ColumnName="Facility PE RVUs" />
+                <ScalarProperty Name="Mal__Practice_RVUs" ColumnName="Mal- Practice RVUs" />
+                <ScalarProperty Name="Total_Non_Facility_RVUs" ColumnName="Total Non-Facility RVUs" />
+                <ScalarProperty Name="Total_Facility_RVUs" ColumnName="Total Facility RVUs" />
+                <ScalarProperty Name="Global" ColumnName="Global" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MUE_Information">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.MUE_Information">
+              <MappingFragment StoreEntitySet="MUE_Information">
+                <ScalarProperty Name="MUE_ID" ColumnName="MUE_ID" />
+                <ScalarProperty Name="HCPCS_CPT_Code" ColumnName="HCPCS CPT Code" />
+                <ScalarProperty Name="Outpatient_Hospital_Services_MUE_Values" ColumnName="Outpatient Hospital Services MUE Values" />
+                <ScalarProperty Name="MUE_Adjudication_Indicator" ColumnName="MUE Adjudication Indicator" />
+                <ScalarProperty Name="MUE_Rationale" ColumnName="MUE Rationale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPPS_Addendum_B">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.OPPS_Addendum_B">
+              <MappingFragment StoreEntitySet="OPPS_Addendum_B">
+                <ScalarProperty Name="HCPCS_Code" ColumnName="HCPCS Code" />
+                <ScalarProperty Name="Short_Descriptor" ColumnName="Short Descriptor" />
+                <ScalarProperty Name="CH" ColumnName="CH" />
+                <ScalarProperty Name="SI" ColumnName="SI" />
+                <ScalarProperty Name="APC" ColumnName="APC" />
+                <ScalarProperty Name="Relative_Weight" ColumnName="Relative Weight" />
+                <ScalarProperty Name="Payment_Rate_" ColumnName="Payment Rate " />
+                <ScalarProperty Name="National_Unadjusted_Copayment_" ColumnName="National Unadjusted Copayment " />
+                <ScalarProperty Name="Minimum_Unadjusted_Copayment_" ColumnName="Minimum Unadjusted Copayment " />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserActions">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.UserAction">
+              <MappingFragment StoreEntitySet="UserActions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserAction1" ColumnName="UserAction" />
+                <ScalarProperty Name="IsSecureAction" ColumnName="IsSecureAction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserClaims">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.UserClaim">
+              <MappingFragment StoreEntitySet="UserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserNameConfirmed" ColumnName="UserNameConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="Auth0Identifier" ColumnName="Auth0Identifier" />
+                <ScalarProperty Name="StripeIdentifier" ColumnName="StripeIdentifier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C2018_MPFS_Addendum_B">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.C2018_MPFS_Addendum_B">
+              <MappingFragment StoreEntitySet="2018 MPFS Addendum B">
+                <ScalarProperty Name="Global" ColumnName="Global" />
+                <ScalarProperty Name="Total_Facility_RVUs2" ColumnName="Total Facility RVUs2" />
+                <ScalarProperty Name="Total_Non_Facility_RVUs2" ColumnName="Total Non-Facility RVUs2" />
+                <ScalarProperty Name="Mal_Practice_RVUs2" ColumnName="Mal-Practice RVUs2" />
+                <ScalarProperty Name="Facility_PE_RVUs2" ColumnName="Facility PE RVUs2" />
+                <ScalarProperty Name="Non_Facility_PE_RVUs2" ColumnName="Non-Facility PE RVUs2" />
+                <ScalarProperty Name="Work_RVUs2" ColumnName="Work RVUs2" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Not_Used_for_Medicare_Payment" ColumnName="Not Used for Medicare Payment" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Mod" ColumnName="Mod" />
+                <ScalarProperty Name="CPT1__HCPCS" ColumnName="CPT1  HCPCS" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C2018_OPPS_Addendum_B">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.C2018_OPPS_Addendum_B">
+              <MappingFragment StoreEntitySet="2018_OPPS_Addendum_B">
+                <ScalarProperty Name="Minimum_Unadjusted_Copayment_" ColumnName="Minimum Unadjusted Copayment " />
+                <ScalarProperty Name="National_Unadjusted_Copayment_" ColumnName="National Unadjusted Copayment " />
+                <ScalarProperty Name="Payment_Rate_" ColumnName="Payment Rate " />
+                <ScalarProperty Name="Relative_Weight" ColumnName="Relative Weight" />
+                <ScalarProperty Name="APC_" ColumnName="APC " />
+                <ScalarProperty Name="SI" ColumnName="SI" />
+                <ScalarProperty Name="CI" ColumnName="CI" />
+                <ScalarProperty Name="Short_Descriptor" ColumnName="Short Descriptor" />
+                <ScalarProperty Name="HCPCS_Code" ColumnName="HCPCS Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C2018_GPCI_Addendum_E">
+            <EntityTypeMapping TypeName="DB_A3003E_emedicodesModel.C2018_GPCI_Addendum_E">
+              <MappingFragment StoreEntitySet="2018_GPCI_Addendum_E">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MP_GPCI" ColumnName="MP_GPCI" />
+                <ScalarProperty Name="PE_GPCI" ColumnName="PE_GPCI" />
+                <ScalarProperty Name="PW_GPCI" ColumnName="PW_GPCI" />
+                <ScalarProperty Name="LocalName" ColumnName="LocalName" />
+                <ScalarProperty Name="LocalNumber" ColumnName="LocalNumber" />
+                <ScalarProperty Name="MedAdmin" ColumnName="MedAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+<div class="card" ng-controller="CasesCtrl">
+    <div class="card-heading">
+        <h3>Your Current Cases</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="pull-left">
+                <button class="btn btn-raised btn-primary ripple" ng-click="goToCaseForm()" type="button">Create Case</button>
+            </div>
+        </div>
+        <div class="mv-lg"></div>
+        <div class="row">
+            <div style="overflow:auto; height:500px;">
+                <table class="table table-responsive table-bordered">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Case Name</th>
+                        <th>Case Description</th>
+                    </tr>
+                    <tbody>
+                        <tr ng-repeat="Case in UserCaseList">
+                            <td>
+                                <button class="btn btn-raised btn-primary ripple" ng-click="ViewCase(Case.CaseID)" type="button">View Case</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-raised btn-danger ripple" ng-click="DeleteCase(Case.CaseID)" type="button">Delete Case</button>
+                            </td>
+                            <td>{{Case.CaseName}}</td>
+                            <td>{{Case.CaseDescription}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

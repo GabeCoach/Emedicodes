@@ -1,0 +1,31 @@
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+    <div class="card" ng-controller="CPTListCtrl">
+        <div class="card-heading">
+            <h3>CPT Codes</h3>
+        </div>
+        <hr>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-raised btn-primary ripple" ng-click="ViewCPT()">View CPT</button>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" ng-click="searchMPFSByCPT()" class="btn btn-raised btn-primary ripple">Search</button>
+                        </span>
+                        <input type="text" ng-model="SearchValue" placeholder="Search By CPT Code Or By CPT Description" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="mv-lg"></div>
+            <div class="row">
+                <div ui-grid="CPTListOptions" ui-grid-selection></div>
+                <div>
+                    <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="onPageChanged()" num-pages="totalPages" force-ellipses="true"
+                        rotate="true" max-size="10"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+<div class="card" ng-controller="CaseFormCtrl">
+    <div class="card-heading">
+        <h3>Create A Case</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="pull-left">
+                <button class="btn btn-raised btn-danger ripple" ng-click="Cancel()" type="button">Cancel</button>
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-raised btn-primary ripple" ng-click="Save()" type="button">Save Case</button>
+            </div>
+        </div>
+        <div class="mv-lg"></div>
+        <div class="row">
+            <form id="SaveCaseForm"  name="SaveCaseForm" novalidate="">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input class="form-control" ng-model="CaseName" placeholder="Case Name" />
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" ng-model="CaseDescription" placeholder="Case Description" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="mv-lg"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button type="button" ng-click="searchMPFSByCPT()" class="btn btn-raised btn-primary btn-sm ripple">Search</button>
+                    </span>
+                    <input type="text" ng-model="SearchValue" placeholder="Search By CPT Code" class="form-control input-sm">
+                </div>
+                <div class="mv-sm"></div>
+                <div ui-grid="SearchCodeGrid" ui-grid-selection></div>
+                <div>
+                    <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="onPageChanged()" num-pages="totalPages" force-ellipses="true"
+                        rotate="true" max-size="10"></ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group-btn">
+                    <button type="button" ng-click="AddCode()" class="btn btn-raised btn-primary btn-sm ripple">Add Code</button>
+                    <div class="pull-right">
+                            <button type="button" ng-click="RemoveCode()" class="btn btn-raised btn-danger btn-sm ripple">Remove Code</button>
+                    </div>
+                </div>
+                <div class="mv-sm"></div>
+                <div ui-grid="CodeGrid" ui-grid-selection></div>
+            </div>
+        </div>
+    </div>
+</div>

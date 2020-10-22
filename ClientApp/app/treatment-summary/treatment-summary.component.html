@@ -1,0 +1,33 @@
+<div class="card" ng-controller="TreatmentSummaryCtrl">
+    <div class="card-heading">
+        <h5>Re-Imbursement Summary</h5>
+    </div>
+    <div class="card-body" style="overflow:auto; height:500px;">
+        <table class="table table-bordered table-responsive">
+            <thead>
+                <tr>
+                    <th>CPT Code</th>
+                    <th>Modality Name</th>
+                    <th>Increase/Decrease</th>
+                    <th>Number of Treatments</th>
+                    <th>Treatment Cost</th>
+                    <th>{{TreatmentSetting}} Payment Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Codes in TreatmentCodes">
+                    <td>{{Codes.cpt_code}}</td>
+                    <td>{{Codes.modality_name}}</td>
+                    <td>
+                        <button type="button" ng-click="toggleTreatmentAmount($index,'plus')" class="btn btn-circle btn-sm btn-success ripple"><em class="ion-plus-round"></em></button>
+                        <button type="button" ng-click="toggleTreatmentAmount($index,'minus')" class="btn btn-circle btn-sm btn-danger ripple"><em class="ion-minus-round"></em></button>
+                    </td>
+                    <td>{{Codes.number_of_treatments}}</td>
+                    <td>{{Codes.treatment_dollar_amount | currency : "$" : 2}}</td>
+                    <td>{{Codes.opps_payment_rate | currency : "$" : 2}}</td>
+                </tr>  
+            </tbody>
+        </table>
+
+    </div>
+</div>

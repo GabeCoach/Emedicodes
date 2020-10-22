@@ -1,0 +1,25 @@
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+<div class="card" ng-controller="BugReportCtrl">
+    <div class="card-heading bg-primary">
+        <div class="pull-right">
+            <em class="ion-ios-browsers-outline icon-2x va-top"></em>
+        </div>
+        <div class="card-title">Bug Reporting</div>
+    </div>
+    <div class="card-toolbar bg-primary">Report any errors that you experience within the EmediCodes application.</div>
+    <div class="card-body">
+        <form class="form-validate">
+            <div class="mv-sm"></div>
+            <div class="mda-form-group">
+                <div class="mda-form-control">
+                  <textarea rows="4" aria-multiline="true" ng-model="BugReportDescription" tabindex="0" aria-invalid="false" class="form-control"></textarea>
+                  <div class="mda-form-control-line"></div>
+                  <label>Bug Description</label><span class="mda-form-msg right">Describe the bug you experienced.</span>
+                </div>
+            </div>
+            <div class="mda-form-group">
+                <button type="submit" ng-click="submitTicket()" class="btn btn-raised btn-primary ripple">Submit Ticket</button>
+            </div>
+        </form>
+    </div>
+</div>

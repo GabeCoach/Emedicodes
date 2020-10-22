@@ -1,0 +1,43 @@
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+<div class="page-container bg-blue-grey-900" ng-controller="PaymentCtrl">
+    <div class="container-full">
+      <div class="container container-xs"><img src="ClientApp/assets/img/eMedicodes_larger.png" class="mv-lg block-center img-responsive">
+        <div>
+            <div class="card">
+                <div class="card-heading">
+                    <h4>Enter Your Card Information</h4>
+                </div>
+                <div class="card-body">
+                    <form name="payment" ng-submit="submit()">
+                        <div class="row">
+                            <label for="card-element">
+                                Credit or debit card
+                            </label>
+                            <div id="card-element">
+                                <!-- a Stripe Element will be inserted here. -->
+                            </div>
+                            <div class="mda-form-group float-label mda-input-group">
+                                <div class="mda-form-control">
+                                    <input type="text" name="CouponCode" ng-model="CouponCode" class="form-control">
+                                    <div class="mda-form-control-line"></div>
+                                    <label>Coupon Code</label>
+                                </div>
+                                <span class="mda-input-group-addon">
+                                    <em class="ion-ios-contact icon-lg"></em>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mv-sm"></div>
+                        <button class="btn btn-primary" type="submit" ng-disabled="submitting">Creat Account</button>
+                        <div ng-show="cardError" class="row">
+                            <div class="has-error">
+                                <p class="help-block">* {{cardError}}</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="EmediCodesApplication">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Bootstrap Admin Template">
+    <title>EmediCodes</title>
+    <!-- build:css(../app) css/vendor-user.css-->
+    <!-- Animate.CSS-->
+    <link rel="stylesheet" href="ClientApp/assets/vendor/animate.css">
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="ClientApp/assets/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Ionicons-->
+    <link rel="stylesheet" href="ClientApp/assets/vendor/ionicons/css/ionicons.css">
+    <!-- Material Colors-->
+    <link rel="stylesheet" href="ClientApp/assets/vendor/material-colors/dist/colors.css">
+    <!-- endbuild-->
+    <link rel="stylesheet" href="ClientApp/assets/angular-ui-grid/ui-grid.min.css">
+    <!-- Toaster -->
+    <link href="ClientApp/assets/css/toaster.min.css" rel="stylesheet" />
+    <base href="" />
+    <!-- Application styles-->
+    <link rel="stylesheet" href="ClientApp/assets/css/app.css">
+    <link rel="stylesheet" href="ClientApp/assets/css/spinner.css">
+  </head>
+
+  <body class="theme-1" ng-cloak>
+    
+
+      <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+      
+     <div class="layout-container" ui-view=""></div> 
+    
+    <!-- build:js(../app) js/vendor-user.js-->
+    <!-- Modernizr-->
+    <script src="ClientApp/assets/vendor/modernizr/modernizr.custom.js"></script>
+    <!-- jQuery-->
+    <script src="ClientApp/assets/vendor/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap-->
+    <script src="ClientApp/assets/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- jQuery Browser-->
+    <script src="ClientApp/assets/vendor/jquery.browser/dist/jquery.browser.js"></script>
+    <!-- Material Colors-->
+    <script src="ClientApp/assets/vendor/material-colors/dist/colors.js"></script>
+    <!-- jQuery Form Validation-->
+    <script src="ClientApp/assets/vendor/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="ClientApp/assets/vendor/jquery-validation/dist/additional-methods.js"></script>
+    <!-- endbuild-->
+    <!-- App script-->
+    <script src="ClientApp/assets/js/app.js"></script>
+
+    <!--Stripe Elements-->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- Angular -->
+    <script src="ClientApp/assets/js_libraries/angular.min.js"></script>
+    <script src="ClientApp/assets/js_libraries/auth0.min.js"></script>
+    <script src="ClientApp/assets/js_libraries/angular-auth0.min.js"></script>
+    <script src="ClientApp/assets/js_libraries/angular-ui-router.min.js"></script>
+    <script src="ClientApp/assets/js_libraries/statehelper.min.js"></script>
+    <script src="ClientApp/assets/js_libraries/angular-animate.min.js"></script>
+    <script src="ClientApp/assets/js_libraries/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="ClientApp/assets/js_libraries/ui-grid.min.js"></script>
+    <script src="ClientApp/assets/js_libraries/toaster.min.js"></script>
+    <script src="ClientApp/app/build/js/all-js.min.js"></script>     
+
+  </body>
+</html>

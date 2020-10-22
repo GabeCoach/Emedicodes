@@ -1,0 +1,10 @@
+<div class="card" ng-controller="DiseaseSiteCtrl">
+    <div class="card-heading">
+        <h5>Disease Site</h5>
+    </div>
+    <div class="card-body">
+        <select class="form-control" ng-model="DiseaseSite" ng-change="chooseDiseaseSite()">
+            <option ng-repeat="Disease in DiseaseSites">{{Disease.DiseaseSiteName}}</option>
+        </select>
+    </div>
+</div>

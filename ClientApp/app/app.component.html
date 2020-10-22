@@ -1,0 +1,76 @@
+ <!-- Application styles-->
+ <link rel="stylesheet" href="ClientApp/assets/css/app.css">
+ <script src="ClientApp/assets/js/app.js"></script>
+ 
+ 
+
+ <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+<!-- top navbar-->
+<header class="header-container" ng-controller="AppCtrl">
+    <nav>
+      <ul class="visible-xs visible-sm">
+        <li><a id="sidebar-toggler" href="#" class="menu-link menu-link-slide"><span><em></em></span></a></li>
+      </ul>
+      <ul class="hidden-xs">
+        <li><a id="offcanvas-toggler" href="#" class="menu-link menu-link-slide"><span><em></em></span></a></li>
+      </ul>
+      <h2 class="header-title"></h2>
+      <ul class="pull-right">
+        <li class="dropdown"><a href="" data-toggle="dropdown" class="dropdown-toggle has-badge ripple"><em class="ion-person"></em></a>
+            <ul class="dropdown-menu dropdown-menu-right md-dropdown-menu">
+                <li><a href="#/app/profile"><em class="ion-home icon-fw"></em>Profile</a></li>
+                <li role="presentation" class="divider"></li>
+                <li><a href="" ng-click="LogOut()"><em class="ion-log-out icon-fw"></em>Logout</a></li>
+            </ul>
+        </li>
+      </ul>
+    </nav>
+    
+  </header>
+  <!-- sidebar-->
+  <aside class="sidebar-container" ng-controller="AppCtrl">
+    <div class="sidebar-header">
+      <div class="pull-right pt-lg text-muted hidden" ></div><a href="#"><img src="ClientApp/assets/img/eMedicodes_larger.png" class="img-responsive"></a>
+    </div>
+    <div class="sidebar-content">
+      <div class="sidebar-toolbar text-center"><a href=""><img src="ClientApp/assets/img/user/01.jpg" alt="Profile" class="img-circle thumb64"></a>
+        <div class="mt">Welcome, {{UserProfile.FirstName + " " + UserProfile.LastName}}</div>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <!--<li><a href="#/app/disease-site" class="ripple"><span class="pull-right nav-label"></span><span class="nav-icon"><img src="" data-svg-replace="ClientApp/assets/img/icons/aperture.svg" alt="MenuItem" class="hidden"></span><span>Pre-Defined Cases</span></a></li>-->
+          <li><a href="#/app/case-list" class="ripple"><span class="pull-right nav-label"></span><span class="nav-icon"><img src="" data-svg-replace="ClientApp/assets/img/icons/clipboard.svg" alt="MenuItem" class="hidden"></span><span>My Cases</span></a></li>
+          <li><a href="#/app/cpt-list" class="ripple"><span class="pull-right nav-label"></span><span class="nav-icon"><img src="" data-svg-replace="ClientApp/assets/img/icons/levels.svg" alt="MenuItem" class="hidden"></span><span>CPT</span></a></li>
+          <li><a href="#/app/icd-10" class="ripple"><span class="pull-right nav-label"></span><span class="nav-icon"><img src="" data-svg-replace="ClientApp/assets/img/icons/planet.svg" alt="MenuItem" class="hidden"></span><span>ICD-10</span></a></li>  
+          <li><a href="#/app/bugs" class="ripple"><span class="pull-right nav-label"></span><span class="nav-icon"><img src="" data-svg-replace="ClientApp/assets/img/icons/aperture.svg" alt="MenuItem" class="hidden"></span><span>Report A Bug</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <div class="sidebar-layout-obfuscator"></div>
+  <!-- Main section-->
+  <main class="main-container" ng-controller="AppCtrl">
+    <!-- Page content-->
+    <section>
+      <div class="content-heading bg-white">
+        <div class="row">
+          <div class="col-sm-9">
+            <h4 class="m0 text-thin">Simplifying Medical Billing and Coding <small>In Three Clicks or Less</small> </h4>
+          </div>
+        </div>
+      </div>
+      <div ng-show="ShowFreeTrialBanner">
+        <div class="card" >
+          <div class="card-body">
+              <p>You have {{FreeTrialPeriodAmmount}} days left in your free trial period.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container-fluid" >
+        <div ui-view=""></div>
+      </div>
+    </section>
+    <!-- Page footer-->
+    <footer><span>&copy 2017 - eMediCodes.com - All CPT and ICD-10 codes are copyright of the American Medical Association</span></footer>
+  </main>

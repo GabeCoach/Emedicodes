@@ -1,0 +1,10 @@
+<div class="card" ng-controller="ModalityCtrl">
+    <div class="card-heading">
+        <h5>Modalities</h5>
+    </div>
+    <div class="card-body">
+        <select class="form-control" ng-model="Modality" ng-change="chooseModality()">
+            <option ng-repeat="Modality in ApplicableModalities" value="{{Modality.ModalityID}}">{{Modality.ModalityName}}</option>
+        </select>
+    </div>
+</div>

@@ -1,0 +1,316 @@
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+<div class="card" ng-controller="CPTCtrl">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-xs-6">
+          <h3 class="m0">{{CurrentCPT.CPT1}}</h3><small class="">CPT Code</small>
+        </div>
+        <div class="col-xs-6 ">
+          
+        </div>
+      </div>
+    
+      <hr>
+      <div class="row">
+        <div class="col-md-2">
+          <h4 class="m0">Long Descriptor:</h4>
+        </div>
+        <div class="col-md-10">
+          <p>{{CurrentCPT.Description}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-2">
+            <h4 class="m0">Hospital Based (HOPPS):</h4>
+        </div>
+        <div class="col-md-2" ng-hide="hideWageIndexTable">
+            <h6>Select an Area</h6>
+        </div>
+        <div class="col-md-6 pull-right">
+            <div class="">
+                <button class="btn-raised btn-primary ripple" ng-hide="!hideWageIndexTable" ng-click="ShowWageIndexTable()">Calculate Wage Index Adjusted Payment</button>
+                <button class="btn-raised btn-primary ripple" ng-hide="hideWageIndexTable" ng-click="PerformWageIndexCalculation()">Perform Adjusted Payment Calculation</button>
+            </div>
+        </div>
+
+      </div>
+      <div class="mv-lg"></div>
+      <div class="row" ng-hide="hideOppsData">
+        <div class="col-xs-6 col-lg-3">
+            <div class="card">
+              <div class="card-body pv">
+                <div class="clearfix">
+                  <div class="pull-left">
+                    <h4 class="m0 text-thin">{{CurrentOPPS.APC}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>APC:</small>
+                  </div>
+                  <div class="pull-right mt-lg">
+                    <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-lg-3">
+            <div class="card">
+              <div class="card-body pv">
+                <div class="clearfix">
+                  <div class="pull-left">
+                    <h4 class="m0 text-thin">{{CurrentOPPS.CH}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>CH:</small>
+                  </div>
+                  <div class="pull-right mt-lg">
+                    <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-lg-3">
+            <div class="card">
+              <div class="card-body pv">
+                <div class="clearfix">
+                  <div class="pull-left">
+                    <h4 class="m0 text-thin">{{CurrentOPPS.SI}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>SI:</small>
+                  </div>
+                  <div class="pull-right mt-lg">
+                    <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-lg-3">
+            <div class="card">
+              <div class="card-body pv">
+                <div class="clearfix">
+                  <div class="pull-left">
+                    <h4 class="m0 text-thin">{{CurrentOPPS.Payment_Rate_}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>Re-Imbursement:</small>
+                  </div>
+                  <div class="pull-right mt-lg">
+                    <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row" ng-hide="hideWageIndexTable">
+        <div class="col-md-12">
+            <div ui-grid-selection ui-grid="WageIndexGridOptions">
+            </div>
+        </div>
+      </div>
+      <div class="row" ng-hide="hideWageIndexCalculations">
+          <div class="col-md-6">
+            <div class="card bg-warning">
+                <div class="card-body pv">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <h4 class="m0 text-thin">{{preliminaryAdjustmentAmount | currency : "$" : 2}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>Preliminary Adjustment Amount:</small>
+                    </div>
+                    <div class="pull-right mt-lg">
+                      <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card bg-warning">
+                <div class="card-body pv">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <h4 class="m0 text-thin">{{wageIndexAdjustedAmount | currency : "$" : 2}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>Wage Index Adjusted Payment:</small>
+                    </div>
+                    <div class="pull-right mt-lg">
+                      <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-2">
+            <h4 class="m0">MPFS Based</h4>
+        </div>
+        <div class="col-md-2">
+            <small>Scope:</small>
+            <div>
+                <h5>{{PaymentScope}}</h5>
+            </div>
+        </div>
+        <div class="col-md-6 pull-right">
+            <div class="form-group">
+                <label>GPCI Locale's</label>
+                <select class="form-control" ng-model="GPCILocality" ng-change="onGPCILocaleChange()">
+                    <option ng-repeat="GPCI in GPCILocale">{{GPCI.LocalName}}</option>
+                </select>
+            </div>
+        </div>
+      </div>
+      <div class="mv-lg"></div>
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body pv">
+                                <div class="clearfix">
+                                    <div class="pull-left">
+                                        <h4 class="m0 text-thin">{{CurrentCPT.CPT1_HCPCS}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>HCPCS Code:</small>
+                                    </div>
+                                    <div class="pull-right mt-lg">
+                                        <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body pv">
+                                <div class="clearfix">
+                                    <div class="pull-left">
+                                        <h4 class="m0 text-thin">2018</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>Year:</small>
+                                    </div>
+                                    <div class="pull-right mt-lg">
+                                        <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body pv">
+                                <div class="clearfix">
+                                    <div class="pull-left">
+                                        <h4 class="m0 text-thin">Direct</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>MD-Supervision:</small>
+                                    </div>
+                                    <div class="pull-right mt-lg">
+                                        <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card bg-success">
+                            <div class="card-body pv">
+                                <div class="clearfix">
+                                    <div class="pull-left">
+                                        <h4 class="m0 text-thin">{{GlobalPaymentRate | currency : "$" : 2}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>Global Rate:</small>
+                                    </div>
+                                    <div class="pull-right mt-lg">
+                                        <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card bg-primary">
+                            <div class="card-body pv">
+                                <div class="clearfix">
+                                    <div class="pull-left">
+                                        <h4 class="m0 text-thin">{{TechnicalPaymentRate | currency : "$" : 2}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>Technical Rate:</small>
+                                    </div>
+                                    <div class="pull-right mt-lg">
+                                        <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card bg-purple-400">
+                            <div class="card-body pv">
+                                <div class="clearfix">
+                                    <div class="pull-left">
+                                        <h4 class="m0 text-thin">{{ProfessionalPaymentRate | currency : "$" : 2}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>Professional Rate:</small>
+                                    </div>
+                                    <div class="pull-right mt-lg">
+                                        <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="col-md-4">
+                            <div class="card bg-success">
+                                <div class="card-body pv">
+                                    <div class="clearfix">
+                                        <div class="pull-left">
+                                            <h4 class="m0 text-thin">{{GlobalRVU}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>Global RVU:</small>
+                                        </div>
+                                        <div class="pull-right mt-lg">
+                                            <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-primary">
+                                <div class="card-body pv">
+                                    <div class="clearfix">
+                                        <div class="pull-left">
+                                            <h4 class="m0 text-thin">{{TechnicalRVU}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>Technical RVU:</small>
+                                        </div>
+                                        <div class="pull-right mt-lg">
+                                            <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-purple-400">
+                                <div class="card-body pv">
+                                    <div class="clearfix">
+                                        <div class="pull-left">
+                                            <h4 class="m0 text-thin">{{ProfessionalRVU}}</h4><small class="m0 text-muted"><em class="mr-sm ion-arrow-up-b"></em>Professional RVU:</small>
+                                        </div>
+                                        <div class="pull-right mt-lg">
+                                            <div id="sparkline2" data-line-color="#4caf50" class="sparkline"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+      
+      
+      <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-heading">CCI Information</div>
+                <div class="card-body">
+                    <div ui-grid="CCIEditOptions"></div>
+                </div>
+            </div>
+        </div>
+        <hr class="visible-xs visible-sm">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-heading">MUE Information</div>
+                <div class="card-body">
+                    <div ui-grid="MUEOptions"></div>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
